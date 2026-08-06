@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Delete Your DearDiary Account</title>
 <style>
-  :root {
-    color-scheme: light dark;
-  }
+  :root { color-scheme: light dark; }
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -20,12 +18,9 @@
     .card { background: #241d18 !important; border-color: #3a2e24 !important; }
     .muted { color: #b0a89e !important; }
     a { color: #E6B87D !important; }
+    input { background: #1a1512 !important; color: #f0f0f0 !important; border-color: #3a2e24 !important; }
   }
-  .wrap {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 48px 24px 80px;
-  }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 48px 24px 80px; }
   .icon { font-size: 40px; margin-bottom: 8px; }
   h1 { font-size: 24px; margin: 0 0 4px; }
   .muted { color: #8B7355; font-size: 14px; margin: 0 0 32px; }
@@ -40,17 +35,39 @@
   p { margin: 0 0 12px; font-size: 15px; }
   ul { margin: 0 0 12px; padding-left: 20px; font-size: 15px; }
   li { margin-bottom: 6px; }
-  a.button {
-    display: inline-block;
+  label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+    border: 1px solid #D9C7A8;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 14px;
+    background: #FFFDF9;
+    color: #2D1810;
+  }
+  button {
+    display: block;
+    width: 100%;
     background: #D4A574;
-    color: #FFF !important;
-    text-decoration: none;
+    color: #FFF;
+    border: none;
     font-weight: 600;
     padding: 13px 24px;
     border-radius: 10px;
     font-size: 15px;
+    cursor: pointer;
   }
+  button:disabled { opacity: 0.6; cursor: default; }
+  button.danger { background: #DC3545; }
   a { color: #B5804A; }
+  a.text-link { font-size: 13px; }
+  .status { font-size: 13px; margin-top: 10px; min-height: 18px; }
+  .status.error { color: #DC3545; }
+  .status.ok { color: #2E8B57; }
+  .step { display: none; }
+  .step.active { display: block; }
   footer { text-align: center; font-size: 12px; color: #A0947F; margin-top: 32px; }
 </style>
 </head>
@@ -58,33 +75,141 @@
   <div class="wrap">
     <div class="icon">📔</div>
     <h1>Delete Your DearDiary Account</h1>
-    <p class="muted">Request permanent deletion of your DearDiary account and the data associated with it &mdash; no app install required.</p>
+    <p class="muted">Permanently delete your account and profile &mdash; verified by email, no app install required.</p>
 
     <div class="card">
       <h2>What gets deleted</h2>
       <ul>
         <li><strong>Your account credential</strong> (email/password or Google sign-in link).</li>
-        <li><strong>Your profile</strong> &mdash; name, bio, age, and photo, stored with our backend provider, Supabase.</li>
+        <li><strong>Your profile</strong> &mdash; name, bio, age, and photo.</li>
       </ul>
-      <p class="muted">This does not include diary entries stored locally on a specific device, or a Google Drive backup already sitting in your own Drive &mdash; see the note below.</p>
+      <p class="muted">Diary entries stored locally on a device, and any Google Drive backup already sitting in your own Drive, aren't touched by this &mdash; see the note at the bottom.</p>
     </div>
 
     <div class="card">
-      <h2>How to request deletion</h2>
-      <p>Email us from the address associated with your account, with the subject line <strong>"Delete My Account"</strong>. Include your account email if it differs from the sending address.</p>
-      <p><a class="button" href="mailto:apoorvactor@gmail.com?subject=Delete%20My%20Account">Email apoorvactor@gmail.com</a></p>
-      <p class="muted">We process deletion requests within 30 days and will confirm by email once it's done.</p>
+      <div id="step-email" class="step active">
+        <h2>Step 1: Verify it's you</h2>
+        <label for="email">Account email</label>
+        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" />
+        <button id="send-code-btn">Send verification code</button>
+        <div id="email-status" class="status"></div>
+      </div>
+
+      <div id="step-code" class="step">
+        <h2>Step 2: Enter the code</h2>
+        <p class="muted">We emailed a code to <strong id="code-email-echo"></strong>. It expires shortly, so enter it soon.</p>
+        <label for="code">6-digit code</label>
+        <input id="code" type="text" inputmode="numeric" placeholder="123456" maxlength="6" autocomplete="one-time-code" />
+        <button id="verify-btn" class="danger">Verify &amp; permanently delete</button>
+        <div id="code-status" class="status"></div>
+        <p style="margin-top:14px;"><a href="#" id="restart-link" class="text-link">Use a different email</a></p>
+      </div>
+
+      <div id="step-done" class="step">
+        <h2>✅ Account deleted</h2>
+        <p>Your DearDiary account and profile have been permanently deleted. This tab is safe to close.</p>
+      </div>
     </div>
 
     <div class="card">
       <h2>What this doesn't cover</h2>
       <p>Diary entries live only on your own device's local storage &mdash; we never receive them, so there's nothing on our servers to delete on that front. Uninstalling the app, or clearing its data from your device's app settings, removes them from that device.</p>
-      <p>If you enabled Google Drive backup, that backup lives in your own Google Drive (Google's app-private storage area), not on our servers. Remove it directly from <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a>, or by revoking DearDiary's access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</p>
+      <p>If you enabled Google Drive backup, that backup lives in your own Google Drive, not on our servers. Remove it directly from <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a>, or by revoking DearDiary's access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</p>
     </div>
 
-    <p class="muted">You can also delete your account directly from the app: open <strong>Profile</strong> and tap <strong>Delete Account</strong> at the bottom &mdash; no waiting required.</p>
+    <p class="muted">Trouble with the form above? Email <a href="mailto:apoorvactor@gmail.com?subject=Delete%20My%20Account">apoorvactor@gmail.com</a> and we'll process it manually.</p>
 
-    <footer>DearDiary &middot; See our <a href="privacy.html">Privacy Policy</a> for more.</footer>
+    <footer>DearDiary &middot; <a href="privacy.html">Privacy Policy</a></footer>
   </div>
+
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+  // Both values below are the app's public anon key/URL - the same pair
+  // already compiled into the mobile app itself (and thus already
+  // extractable from the APK). Not secrets; safe in client-side code.
+  // Access is governed by Supabase Row Level Security, not by hiding this.
+  const supabase = createClient(
+    'https://bvewnhzcitiijlnmgsys.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ2ZXduaHpjaXRpaWpsbm1nc3lzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzMjY3NjIsImV4cCI6MjA5OTkwMjc2Mn0.LbQDThLZZm_CZg4DJHpZW14pgIh_hzCLqtaJYz4rAgs'
+  );
+
+  const $ = (id) => document.getElementById(id);
+  const showStep = (id) => {
+    document.querySelectorAll('.step').forEach((el) => el.classList.remove('active'));
+    $(id).classList.add('active');
+  };
+  const setStatus = (id, text, kind) => {
+    const el = $(id);
+    el.textContent = text;
+    el.className = 'status' + (kind ? ' ' + kind : '');
+  };
+
+  let pendingEmail = '';
+
+  $('send-code-btn').addEventListener('click', async () => {
+    const email = $('email').value.trim();
+    if (!email || !email.includes('@')) {
+      setStatus('email-status', 'Enter a valid email address.', 'error');
+      return;
+    }
+    $('send-code-btn').disabled = true;
+    setStatus('email-status', 'Sending...', '');
+    // shouldCreateUser: false - this page only ever signs an EXISTING
+    // account in to delete it, never creates a new one.
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: { shouldCreateUser: false },
+    });
+    $('send-code-btn').disabled = false;
+    if (error) {
+      setStatus('email-status', error.message || 'Failed to send code. Please try again.', 'error');
+      return;
+    }
+    pendingEmail = email;
+    $('code-email-echo').textContent = email;
+    setStatus('email-status', '', '');
+    showStep('step-code');
+  });
+
+  $('verify-btn').addEventListener('click', async () => {
+    const token = $('code').value.trim();
+    if (!token) {
+      setStatus('code-status', 'Enter the code from your email.', 'error');
+      return;
+    }
+    $('verify-btn').disabled = true;
+    setStatus('code-status', 'Verifying...', '');
+
+    const { error: verifyError } = await supabase.auth.verifyOtp({
+      email: pendingEmail,
+      token,
+      type: 'email',
+    });
+    if (verifyError) {
+      $('verify-btn').disabled = false;
+      setStatus('code-status', verifyError.message || 'That code didn’t work. Please try again.', 'error');
+      return;
+    }
+
+    setStatus('code-status', 'Verified. Deleting your account...', '');
+    const { error: deleteError } = await supabase.functions.invoke('delete-account');
+    $('verify-btn').disabled = false;
+    if (deleteError) {
+      setStatus('code-status', 'Verified, but deletion failed: ' + (deleteError.message || 'please email us instead.'), 'error');
+      return;
+    }
+
+    await supabase.auth.signOut();
+    showStep('step-done');
+  });
+
+  $('restart-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    $('code').value = '';
+    setStatus('code-status', '', '');
+    showStep('step-email');
+  });
+</script>
 </body>
 </html>
