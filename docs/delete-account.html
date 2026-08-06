@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delete Your DearDiary Account</title>
+<style>
+  :root {
+    color-scheme: light dark;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #FFF8F0;
+    color: #2D1810;
+    line-height: 1.6;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1512; color: #f0f0f0; }
+    .card { background: #241d18 !important; border-color: #3a2e24 !important; }
+    .muted { color: #b0a89e !important; }
+    a { color: #E6B87D !important; }
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+  .icon { font-size: 40px; margin-bottom: 8px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .muted { color: #8B7355; font-size: 14px; margin: 0 0 32px; }
+  .card {
+    background: #ffffff;
+    border: 1px solid #EEE0CC;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  h2 { font-size: 16px; margin: 0 0 10px; }
+  p { margin: 0 0 12px; font-size: 15px; }
+  ul { margin: 0 0 12px; padding-left: 20px; font-size: 15px; }
+  li { margin-bottom: 6px; }
+  a.button {
+    display: inline-block;
+    background: #D4A574;
+    color: #FFF !important;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 13px 24px;
+    border-radius: 10px;
+    font-size: 15px;
+  }
+  a { color: #B5804A; }
+  footer { text-align: center; font-size: 12px; color: #A0947F; margin-top: 32px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="icon">📔</div>
+    <h1>Delete Your DearDiary Account</h1>
+    <p class="muted">Request permanent deletion of your DearDiary account and the data associated with it &mdash; no app install required.</p>
+
+    <div class="card">
+      <h2>What gets deleted</h2>
+      <ul>
+        <li><strong>Your account credential</strong> (email/password or Google sign-in link).</li>
+        <li><strong>Your profile</strong> &mdash; name, bio, age, and photo, stored with our backend provider, Supabase.</li>
+      </ul>
+      <p class="muted">This does not include diary entries stored locally on a specific device, or a Google Drive backup already sitting in your own Drive &mdash; see the note below.</p>
+    </div>
+
+    <div class="card">
+      <h2>How to request deletion</h2>
+      <p>Email us from the address associated with your account, with the subject line <strong>"Delete My Account"</strong>. Include your account email if it differs from the sending address.</p>
+      <p><a class="button" href="mailto:apoorvactor@gmail.com?subject=Delete%20My%20Account">Email apoorvactor@gmail.com</a></p>
+      <p class="muted">We process deletion requests within 30 days and will confirm by email once it's done.</p>
+    </div>
+
+    <div class="card">
+      <h2>What this doesn't cover</h2>
+      <p>Diary entries live only on your own device's local storage &mdash; we never receive them, so there's nothing on our servers to delete on that front. Uninstalling the app, or clearing its data from your device's app settings, removes them from that device.</p>
+      <p>If you enabled Google Drive backup, that backup lives in your own Google Drive (Google's app-private storage area), not on our servers. Remove it directly from <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a>, or by revoking DearDiary's access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</p>
+    </div>
+
+    <p class="muted">You can also delete your account directly from the app: open <strong>Profile</strong> and tap <strong>Delete Account</strong> at the bottom &mdash; no waiting required.</p>
+
+    <footer>DearDiary &middot; See our <a href="privacy.html">Privacy Policy</a> for more.</footer>
+  </div>
+</body>
+</html>
