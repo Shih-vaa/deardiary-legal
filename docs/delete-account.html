@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delete Your DearDiary Account</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #FFF8F0;
+    color: #2D1810;
+    line-height: 1.6;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #1a1512; color: #f0f0f0; }
+    .card, .note { background: #241d18 !important; border-color: #3a2e24 !important; }
+    .muted { color: #b0a89e !important; }
+    a { color: #E6B87D !important; }
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 48px 24px 80px; }
+  .icon { font-size: 40px; margin-bottom: 8px; }
+  h1 { font-size: 24px; margin: 0 0 4px; }
+  .muted { color: #8B7355; font-size: 14px; }
+  .note {
+    background: #FBF3E7;
+    border: 1px solid #EEE0CC;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #8B7355;
+    margin: 20px 0 32px;
+  }
+  .card {
+    background: #ffffff;
+    border: 1px solid #EEE0CC;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 17px; margin: 0 0 10px; }
+  p { margin: 0 0 12px; font-size: 15px; }
+  ul, ol { margin: 0 0 12px; padding-left: 20px; font-size: 15px; }
+  li { margin-bottom: 6px; }
+  a { color: #B5804A; }
+  footer { text-align: center; font-size: 12px; color: #A0947F; margin-top: 32px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="icon">📔</div>
+    <h1>Delete Your DearDiary Account</h1>
+    <p class="muted">DearDiary &middot; Account and data deletion</p>
+
+    <div class="note">
+      This page explains how to delete your DearDiary account and what happens to your data. Deletion is free and does not require reinstalling the app.
+    </div>
+
+    <div class="card">
+      <h2>How to delete your account</h2>
+      <p>You can delete your DearDiary account and profile directly from inside the app:</p>
+      <ol>
+        <li>Open the DearDiary app on your device.</li>
+        <li>Go to the <strong>Profile</strong> section.</li>
+        <li>Tap <strong>Delete Account</strong>.</li>
+        <li>Confirm the deletion when prompted.</li>
+      </ol>
+      <p>Your account and profile are deleted immediately.</p>
+      <p><strong>Can't open the app?</strong> Email <a href="mailto:deardiarytesting@gmail.com">deardiarytesting@gmail.com</a> from the address associated with your account and we will delete it manually within 7 days.</p>
+    </div>
+
+    <div class="card">
+      <h2>What gets deleted</h2>
+      <ul>
+        <li>Your account credential (email/password, or the link to your Google account).</li>
+        <li>Your profile information: display name, bio, age, and profile photo.</li>
+      </ul>
+      <p>These are removed from our backend provider (Supabase) and are not recoverable once deleted.</p>
+    </div>
+
+    <div class="card">
+      <h2>What is not deleted by this action</h2>
+      <p>DearDiary stores your diary content on your own device, and any Google Drive backup in your own Google Drive — not on our servers. Deleting your account does not remove these. To clear them yourself:</p>
+      <ul>
+        <li><strong>Local diary entries:</strong> uninstall the DearDiary app, or clear its data from your device's app settings.</li>
+        <li><strong>Google Drive backup (if enabled):</strong> remove the DearDiary app data from your Google Drive, or revoke DearDiary's access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Retention</h2>
+      <p>Account and profile data are deleted immediately when you delete your account in the app. If you request deletion by email instead, we process it within 7 days. Encrypted database backups held by our provider are purged within 30 days.</p>
+    </div>
+
+    <footer>DearDiary &middot; <a href="privacy.html">Privacy Policy</a></footer>
+  </div>
+</body>
+</html>
