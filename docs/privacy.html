@@ -62,7 +62,7 @@
   <div class="wrap">
     <div class="icon">📔</div>
     <h1>Privacy Policy — DearDiary</h1>
-    <p class="muted">Last updated: August 6, 2026</p>
+    <p class="muted">Last updated: October 15, 2026</p>
 
     <div class="note">
       This policy was drafted by auditing the app's actual code paths — what data it touches, where it sends it, and what third-party SDKs are wired in — not written from a template.
@@ -82,7 +82,7 @@
       <p><strong>Crash and diagnostic data.</strong> We use Sentry to catch crashes and errors. This can include your device type, OS version, IP address, and — for a sample of sessions (10% of normal sessions, 100% of sessions that hit an error) — a masked screen recording (text and images are masked by default).</p>
       <p><strong>Device permissions.</strong></p>
       <ul>
-        <li><em>Photo library:</em> used to pick a profile photo or embed images in a diary page. Selected photos stay on your device.</li>
+        <li><em>Photo library:</em> used to pick a profile photo or embed images in a diary page. Selected photos stay on your device (and are included in backup uploads only if you enable backup).</li>
         <li><em>Biometrics / PIN:</em> if you set an app lock, your PIN and whether biometric unlock is enabled are stored locally only.</li>
         <li><em>Notifications:</em> used only for the optional journaling reminders you configure, scheduled entirely on-device.</li>
       </ul>
@@ -111,8 +111,17 @@
 
     <div class="card">
       <h2>Data Retention and Deletion</h2>
-      <p>Diary content lives on your device until you delete it there, or delete a backup copy from your Google Drive directly. Account and profile data is retained until you ask us to delete it.</p>
-      <p>You can delete your account any time from the app (Profile → Delete Account), or without the app via our <a href="delete-account.html">account deletion page</a>.</p>
+      <p>Diary content lives on your device until you delete it there, or delete a backup copy from your Google Drive's app data directly. Account and profile data (email, name, bio, etc.) is retained until you delete your account.</p>
+      <p><strong>To delete your account and associated data:</strong></p>
+      <ul>
+        <li><strong>In the app:</strong> open <strong>Profile</strong> and tap <strong>Delete Account</strong>. This immediately removes your account credential (email/password or Google sign-in link) and your profile (name, bio, age, photo) from Supabase.</li>
+        <li><strong>If you can't open the app:</strong> email <a href="mailto:shiva.zen.dev@gmail.com">shiva.zen.dev@gmail.com</a> from the address associated with your account and we'll delete it manually.</li>
+      </ul>
+      <p>Deleting your account does not touch diary entries already stored locally on a device, or a Google Drive backup already sitting in your own Drive. To remove those yourself:</p>
+      <ul>
+        <li><strong>Local diary entries:</strong> uninstall the app, or clear its data from your device's app settings.</li>
+        <li><strong>Google Drive backup:</strong> remove the DearDiary app data from Google Drive, or revoke DearDiary's access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
+      </ul>
     </div>
 
     <div class="card">
@@ -130,11 +139,16 @@
     </div>
 
     <div class="card">
-      <h2>Contact</h2>
-      <p>Questions about this policy or your data: <a href="mailto:apoorvactor@gmail.com">apoorvactor@gmail.com</a></p>
+      <h2>Changes to This Policy</h2>
+      <p>If this policy changes in a way that matters, we'll update the date at the top and, for significant changes, note it in the app.</p>
     </div>
 
-    <footer>DearDiary &middot; <a href="delete-account.html">Delete your account</a></footer>
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Questions about this policy or your data: <a href="mailto:shiva.zen.dev@gmail.com">shiva.zen.dev@gmail.com</a></p>
+    </div>
+
+    <footer>DearDiary</footer>
   </div>
 </body>
 </html>
