@@ -67,7 +67,7 @@
         <li>Confirm the deletion when prompted.</li>
       </ol>
       <p>Your account and profile are deleted immediately.</p>
-      <p><strong>Can't open the app?</strong> Email <a href="mailto:deardiarytesting@gmail.com">deardiarytesting@gmail.com</a> from the address associated with your account and we will delete it manually within 7 days.</p>
+      <p><strong>Can't open the app?</strong> Email <a href="mailto:shiva.zen.dev@gmail.com">shiva.zen.dev@gmail.com</a> from the address associated with your account and we will delete it manually within 7 days.</p>
     </div>
 
     <div class="card">
@@ -75,6 +75,7 @@
       <ul>
         <li>Your account credential (email/password, or the link to your Google account).</li>
         <li>Your profile information: display name, bio, age, and profile photo.</li>
+        <li>The encryption key for your Google Drive backup, if you ever used backup.</li>
       </ul>
       <p>These are removed from our backend provider (Supabase) and are not recoverable once deleted.</p>
     </div>
@@ -86,11 +87,12 @@
         <li><strong>Local diary entries:</strong> uninstall the DearDiary app, or clear its data from your device's app settings.</li>
         <li><strong>Google Drive backup (if enabled):</strong> remove the DearDiary app data from your Google Drive, or revoke DearDiary's access at <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>.</li>
       </ul>
+      <p>Your Drive backup is encrypted, and its key is deleted along with your account. A backup file left in your Drive after deletion can no longer be decrypted by anyone, including you, so it is safe to leave but takes up a little storage until you remove it.</p>
     </div>
 
     <div class="card">
       <h2>Retention</h2>
-      <p>Account and profile data are deleted immediately when you delete your account in the app. If you request deletion by email instead, we process it within 7 days. Encrypted database backups held by our provider are purged within 30 days.</p>
+      <p>Account and profile data are deleted immediately when you delete your account in the app. If you request deletion by email instead, we process it within 7 days. Routine database backups kept by our hosting provider (Supabase) are purged within 30 days. This is separate from your own Google Drive backup, described above.</p>
     </div>
 
     <footer>DearDiary &middot; <a href="privacy.html">Privacy Policy</a></footer>
