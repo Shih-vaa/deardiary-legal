@@ -62,7 +62,7 @@
   <div class="wrap">
     <div class="icon">📔</div>
     <h1>Privacy Policy — DearDiary</h1>
-    <p class="muted">Last updated: October 15, 2026</p>
+    <p class="muted">Last updated: October 21, 2026</p>
 
     <div class="note">
       This policy was drafted by auditing the app's actual code paths — what data it touches, where it sends it, and what third-party SDKs are wired in — not written from a template.
@@ -78,7 +78,7 @@
       <p><strong>Account information.</strong> If you sign up with email, we store that email and an encrypted password (handled by Supabase Auth). If you use "Sign in with Google," we receive your Google account's basic identity (email, name) via OAuth, along with a token scoped for Google Drive's app-private storage.</p>
       <p><strong>Profile information.</strong> Anything you enter on the Profile screen — display name, bio, age, profile photo — is stored in our database (Supabase). All of these except your name are optional.</p>
       <p><strong>Diary content.</strong> Everything you write, draw, or paste into a diary — text, doodles, embedded images, page titles — is stored <strong>locally on your device</strong> in a private, sandboxed database. We do not receive or have access to this content unless you turn on backup.</p>
-      <p><strong>Backup (optional, off by default).</strong> If you enable Google Drive backup, your entire diary is uploaded to a hidden, app-private folder in <em>your own</em> Google Drive (Google's <code>appDataFolder</code>), which only this app, authenticated as you, can read. It does not appear in your regular Drive file list. This upload is protected by your Google account's access controls but is <strong>not separately encrypted</strong> by the app before it's sent.</p>
+      <p><strong>Backup (optional, off by default).</strong> If you enable Google Drive backup, your entire diary is uploaded to a hidden, app-private folder in <em>your own</em> Google Drive (Google's <code>appDataFolder</code>), which only this app, authenticated as you, can read. It does not appear in your regular Drive file list. Before upload, the backup is encrypted on your device with AES-256, so the file sitting in your Drive is unreadable without the key. The key is a random value generated once per account and stored with our backend provider (Supabase), protected so that only your signed-in account can fetch it; it is never written to your device or to Google Drive. This means Google, or anyone who gets hold of the Drive file alone, cannot read your diary. It is <strong>not end-to-end encrypted in the zero-knowledge sense</strong>, though: because the key is held by our backend provider rather than derived from a secret only you know, it is not a substitute for a passphrase-protected vault. Backups made by older versions of the app were not encrypted; they are re-uploaded in encrypted form the next time a backup runs.</p>
       <p><strong>Crash and diagnostic data.</strong> We use Sentry to catch crashes and errors. This can include your device type, OS version, IP address, and — for a sample of sessions (10% of normal sessions, 100% of sessions that hit an error) — a masked screen recording (text and images are masked by default).</p>
       <p><strong>Device permissions.</strong></p>
       <ul>
